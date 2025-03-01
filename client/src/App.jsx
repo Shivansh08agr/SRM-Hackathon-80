@@ -1,29 +1,21 @@
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import './App.scss';
-import store from './store';
-import {Provider} from 'react-redux'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './pages/Login/LoginPage';
+import LandingPage from './pages/Landing/LandingPage';
+import CompanyRegisterPage from './pages/Register/CompanyRegisterPage';
+import ShopkeeperRegisterPage from './pages/Register/ShopkeeperRegisterPage';
 
-function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      // <>
-      //   <Route path='/' element={<Layout />}>
-      //     <Route path='' element={<Home />} />
-      //     <Route path='videos/:videoId' element={<Video />} />
-      //   </Route>
-      //   <Route path='/' element={<AuthLayout />}>
-      //     <Route path='register' element={<Register />} />
-      //     <Route path='login' element={<Login />} />
-      //   </Route>
-      // </>
-    )
-  );
+const Dashboard = () => <div>Welcome to the Dashboard!</div>;
 
-  return (
-    <Provider store = {store}>
-      <RouterProvider router={router}/> 
-    </Provider>
-  );
-}
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register/company" element={<CompanyRegisterPage />} />
+      <Route path="/register/shopkeeper" element={<ShopkeeperRegisterPage />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
+  </Router>
+);
 
 export default App;
