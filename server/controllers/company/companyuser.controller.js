@@ -58,22 +58,20 @@ const loginCompanyUser = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ msg: 'Invalid Credentials' });
         }
+        console.log(user._id);
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+            expiresIn: '1h',
+        });
 
-        const payload = {
-            user: {
-                id: user.id
-            }
-        };
-
-        jwt.sign(
-            payload,
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' },
-            (err, token) => {
-                if (err) throw err;
-                res.json({ token });
-            }
-        );
+        // Store token in cookie
+        res.cookie('userId', user._id, {
+            httpOnly: false,
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: 3600000, // 1 hour
+            sameSite: 'strict'
+        });
+        return res.status(200).json({ msg: 'Login successful' });
+        
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');
