@@ -20,28 +20,12 @@ const companyUserSchema = new mongoose.Schema({
         required: true
     },
     address: {
-        street: String,
-        city: String,
-        state: String,
-        zipCode: String
+        type: String
     },
     phoneNumber: {
         type: String
     }
 }, {timestamps: true});
-
-// Hash password before saving
-companyUserSchema.pre('save', async function (next) {
-    if (this.isModified('password')) {
-        this.password = await bcrypt.hash(this.password, 10);
-    }
-    next();
-});
-
-// Method to compare passwords
-companyUserSchema.methods.comparePassword = async function (candidatePassword) {
-    return await bcrypt.compare(candidatePassword, this.password);
-};
 
 const CompanyUser = mongoose.model('CompanyUser', companyUserSchema);
 

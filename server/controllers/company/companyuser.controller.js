@@ -1,10 +1,10 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const CompanyUser = require('../../models/CompanyUser'); // Adjust the path as necessary
+const CompanyUser = require('../../models/company/companyuser.model'); // Adjust the path as necessary
 
 // Register a new company user
-export const registerCompanyUser = async (req, res) => {
-    const { name, email, password } = req.body;
+const registerCompanyUser = async (req, res) => {
+    const { companyName, category, email, password, address } = req.body;
 
     try {
         let user = await CompanyUser.findOne({ email });
@@ -13,12 +13,12 @@ export const registerCompanyUser = async (req, res) => {
         }
 
         user = new CompanyUser({
-            name,
+            companyName,
+            category,
             email,
-            password
+            password,
+            address
         });
-
-        const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
 
         await user.save();
@@ -45,7 +45,7 @@ export const registerCompanyUser = async (req, res) => {
 };
 
 // Login a company user
-export const loginCompanyUser = async (req, res) => {
+const loginCompanyUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
@@ -81,7 +81,7 @@ export const loginCompanyUser = async (req, res) => {
 };
 
 // Get all company users
-export const getAllCompanyUsers = async (req, res) => {
+const getAllCompanyUsers = async (req, res) => {
     try {
         const users = await CompanyUser.find();
         res.json(users);
@@ -92,7 +92,7 @@ export const getAllCompanyUsers = async (req, res) => {
 };
 
 // Filter companies based on categories
-export const filterCompaniesByCategory = async (req, res) => {
+const filterCompaniesByCategory = async (req, res) => {
     const { categories } = req.body;
 
     if (!categories || !Array.isArray(categories) || categories.length === 0) {
@@ -108,3 +108,9 @@ export const filterCompaniesByCategory = async (req, res) => {
     }
 };
 
+module.exports = {
+    registerCompanyUser,
+    loginCompanyUser,
+    getAllCompanyUsers,
+    filterCompaniesByCategory
+};

@@ -8,11 +8,11 @@ const morgan = require('morgan');
 dotenv.config();
 
 // Import routes
-const itemRoutes = require('./routes/itemRoute');
 const cartRoutes = require('./routes/cartRoute');
 const orderRoutes = require('./routes/orderRoute');
 const userRoutes = require('./routes/userRoute');
-const companyRoutes = require('./routes/companyItem.route'); // Changed naming convention
+const itemRoutes = require('./routes/companyItem.route'); // Changed naming convention
+const companyRoutes = require('./routes/company.route');
 
 // Initialize Express app
 const app = express();
@@ -31,11 +31,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/api/items', itemRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/company', companyRoutes); // Updated route name
+app.use('/api/item', itemRoutes); // Updated route name
+app.use('/api/company', companyRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
