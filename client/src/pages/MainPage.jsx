@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/loadingScreen/Sidebar';
 import './MainPage.css';
+import { useNavigate } from 'react-router-dom';
 
 const MainPage = () => {
-  const [activeSection, setActiveSection] = useState('section1');
+  const [activeSection, setActiveSection] = useState('items');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    renderContent();
+  }, [activeSection]);
 
   const renderContent = () => {
     switch (activeSection) {
-      case 'section1':
-        return <div>Content for Section 1</div>;
-      case 'section2':
-        return <div>Content for Section 2</div>;
-      case 'section3':
-        return <div>Content for Section 3</div>;
-      case 'section4':
-        return <div>Content for Section 4</div>;
+      case 'items':
+        navigate("/shopkeeper/placeorder/items");
+        break;
+      case 'Orders and Payments log':
+        navigate("/shopkeeper/ordersandpaymentlog");
+        break;
+      case 'Suggestions':
+        navigate("/shopkeeper/placeorder/suggestions");
+        break;
+      case 'Add Inventory':
+        navigate("/shopkeeper/placeorder/addinventory");
+        break;
       default:
-        return <div>Select a section</div>;
+        navigate("/shopkeeper/placeorder/items");
+        break;
     }
   };
 
@@ -33,4 +44,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage; 
+export default MainPage;

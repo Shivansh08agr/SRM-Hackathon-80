@@ -1,0 +1,64 @@
+.monthly-container {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  input{
+    width: 90%;
+  }
+  .monthly-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .monthly-table th,
+  .monthly-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .monthly-table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .monthly-table tfoot td {
+    font-weight: bold;
+  }
+  
+  .monthly-table tr {
+    cursor: pointer;
+  }
+
+  .monthly-table tr:hover {
+    background-color: rgba(7, 193, 7, 0.608);
+  }
+  
+  @media (max-width: 768px) {
+    .monthly-container {
+      padding: 10px;
+    }
+  
+    .monthly-table th,
+    .monthly-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .monthly-container {
+      padding: 5px;
+    }
+  
+    .monthly-table th,
+    .monthly-table td {
+      padding: 6px;
+      font-size: 12px;
+    }
+  }

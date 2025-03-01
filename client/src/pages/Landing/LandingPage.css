@@ -46,6 +46,7 @@
   font-size: 1.25rem;
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease;
+  color: white;
 }
 
 .cta-buttons {
@@ -134,7 +135,7 @@
 }
 
 .feature-card p {
-  color: #666;
+  color: #d8d5d5;
 }
 
 /* Testimonials Section */
@@ -174,7 +175,7 @@
 
 .testimonial-card p {
   font-style: italic;
-  color: #666;
+  color: #c6c6c6;
   margin-bottom: 1rem;
 }
 
@@ -195,6 +196,7 @@
 .footer-section p {
   margin: 0;
   font-size: 0.9rem;
+  color: white;
 }
 
 /* Animations */

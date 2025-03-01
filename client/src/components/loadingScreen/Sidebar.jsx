@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ setActiveSection }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSectionClick = (section) => {
-    setActiveSection(section);
+    navigate(`/shopkeeper/${section}`)
     toggleSidebar(); // Close the sidebar on mobile after clicking
   };
 
@@ -24,17 +26,17 @@ const Sidebar = ({ setActiveSection }) => {
 
       {/* Sidebar Options */}
       <div className="sidebar-options">
-        <div className="sidebar-item" onClick={() => handleSectionClick('section1')}>
-          Section 1
+        <div className="sidebar-item" onClick={() => handleSectionClick('placeorder/items')}>
+          Items
         </div>
-        <div className="sidebar-item" onClick={() => handleSectionClick('section2')}>
-          Section 2
+        <div className="sidebar-item" onClick={() => handleSectionClick('ordersandpaymentlog')}>
+          Orders and Payments log
         </div>
-        <div className="sidebar-item" onClick={() => handleSectionClick('section3')}>
-          Section 3
+        <div className="sidebar-item" onClick={() => handleSectionClick('suggestions')}>
+          Suggestions
         </div>
-        <div className="sidebar-item" onClick={() => handleSectionClick('section4')}>
-          Section 4
+        <div className="sidebar-item" onClick={() => handleSectionClick('addinventory')}>
+          Add Inventory
         </div>
       </div>
     </div>

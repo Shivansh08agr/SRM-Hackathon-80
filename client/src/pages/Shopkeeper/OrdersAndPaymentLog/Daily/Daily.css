@@ -1,0 +1,63 @@
+.daily-container {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .daily-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .daily-table th,
+  .daily-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .daily-table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .daily-table tfoot td {
+    font-weight: bold;
+  }
+  
+  .daily-table tr {
+    cursor: pointer;
+  }
+
+  .daily-table tr:hover {
+    background-color: rgba(7, 193, 7, 0.608);
+  }
+  
+  
+  @media (max-width: 768px) {
+    .daily-container {
+      padding: 10px;
+    }
+  
+    .daily-table th,
+    .daily-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .daily-container {
+      padding: 5px;
+    }
+  
+    .daily-table th,
+    .daily-table td {
+      padding: 6px;
+      font-size: 12px;
+    }
+  }

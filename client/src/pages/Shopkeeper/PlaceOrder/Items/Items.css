@@ -1,25 +1,15 @@
-/* Main Container */
 .items-container {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   background-color: #e8f5e9;
   padding: 20px;
   border-radius: 8px;
-  padding-left:50px ;
-  padding-top: 50px;
   height: 100vh;
   overflow-y: auto;
 }
 
-/* Content Area */
-.content {
-  flex: 1;
-  margin-left: 270px; /* Add margin to separate from the sidebar */
-}
-
-/* Categories Section */
-.categories {
+.categories{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -28,56 +18,34 @@
   flex-wrap: wrap;
 }
 
-/* Individual Category */
 .category {
   margin-bottom: 20px;
   width: 20rem;
   border: 1px solid #45a049;
   border-radius: 0.2rem;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Category Header */
 .category-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  padding: 10px;
-  background-color: #45a049;
-  color: white;
-  border-radius: 0.2rem 0.2rem 0 0;
 }
-
-.category-header h2 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.category-header button {
+.category-header button{
   outline: none;
   border: none;
   border-radius: 0.2rem;
-  background-color: #388e3c;
+  background-color: #45a049;
   color: white;
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
+  padding: 0.4rem;
 }
 
-.category-header button:hover {
-  background-color: #2e7d32;
-}
-
-/* Items Separator */
 .seperator {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  padding: 10px;
 }
 
-/* Individual Item */
 .item {
   display: flex;
   align-items: center;
@@ -91,11 +59,10 @@
   height: 5rem;
 }
 
-.item input {
+.item input{
   width: auto;
 }
 
-/* Quantity Controls */
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -119,7 +86,6 @@
   margin: 0 10px;
 }
 
-/* Add to Cart Button */
 .add-to-cart {
   background-color: #4caf50;
   color: white;
@@ -127,36 +93,8 @@
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px; /* Add margin to separate from the categories */
-  width: 100%;
-  max-width: 200px;
 }
 
 .add-to-cart:hover {
   background-color: #45a049;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .items-container {
-    flex-direction: column;
-    min-width: 100px; /* Stack sidebar and content vertically on mobile */
-  }
-
-  .content {
-    margin-left: 0; /* Remove margin on mobile */
-  }
-
-  .category {
-    
-    width: 100%; /* Full width on mobile */
-  }
-
-  .item {
-    width: 100%; /* Full width on mobile */
-  }
-
-  .add-to-cart {
-    max-width: 100%; /* Full width on mobile */
-  }
 }

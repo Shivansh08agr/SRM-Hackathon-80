@@ -1,0 +1,54 @@
+.individual-orders-container {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .individual-orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .individual-orders-table th,
+  .individual-orders-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .individual-orders-table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .individual-orders-table tfoot td {
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .individual-orders-container {
+      padding: 10px;
+    }
+  
+    .individual-orders-table th,
+    .individual-orders-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .individual-orders-container {
+      padding: 5px;
+    }
+  
+    .individual-orders-table th,
+    .individual-orders-table td {
+      padding: 6px;
+      font-size: 12px;
+    }
+  }
