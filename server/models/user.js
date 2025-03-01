@@ -8,6 +8,12 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
+    shopName: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
     email: {
         type: String,
         required: true,
@@ -19,16 +25,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    role: {
+    address:{
         type: String,
-        enum: ['user', 'admin'],
-        default: 'user'
+        requires: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    phoneNumber:{
+        type: String,
+        required: true
     }
-});
+},{timestamps: true}
+);
 
 // Hash password before saving
 userSchema.pre('save', async function (next) {

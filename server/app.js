@@ -12,14 +12,15 @@ const itemRoutes = require('./routes/itemRoute');
 const cartRoutes = require('./routes/cartRoute');
 const orderRoutes = require('./routes/orderRoute');
 const userRoutes = require('./routes/userRoute');
+const companyRoutes = require('./routes/companyItem.route'); // Changed naming convention
 
 // Initialize Express app
 const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // Parse JSON bodies
-app.use(morgan('dev')); // Log HTTP requests
+app.use(express.json());
+app.use(morgan('dev'));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -34,6 +35,7 @@ app.use('/api/items', itemRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/company', companyRoutes); // Updated route name
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -43,7 +45,11 @@ app.get('/api/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ error: 'Something went wrong!' });
+    res.status(500).json({ 
+        success: false,
+        message: 'Internal Server Error',
+        error: err.message 
+    });
 });
 
 // Start the server
