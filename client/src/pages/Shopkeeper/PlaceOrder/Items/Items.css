@@ -1,100 +1,162 @@
+/* Main Container */
 .items-container {
-    display: flex;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+  padding-left:50px ;
+  padding-top: 50px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Content Area */
+.content {
+  flex: 1;
+  margin-left: 270px; /* Add margin to separate from the sidebar */
+}
+
+/* Categories Section */
+.categories {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+/* Individual Category */
+.category {
+  margin-bottom: 20px;
+  width: 20rem;
+  border: 1px solid #45a049;
+  border-radius: 0.2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Category Header */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #45a049;
+  color: white;
+  border-radius: 0.2rem 0.2rem 0 0;
+}
+
+.category-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.category-header button {
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: #388e3c;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.category-header button:hover {
+  background-color: #2e7d32;
+}
+
+/* Items Separator */
+.seperator {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Individual Item */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 15rem;
+  height: 5rem;
+}
+
+.item input {
+  width: auto;
+}
+
+/* Quantity Controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.quantity-controls button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #45a049;
+}
+
+.quantity-controls span {
+  margin: 0 10px;
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px; /* Add margin to separate from the categories */
+  width: 100%;
+  max-width: 200px;
+}
+
+.add-to-cart:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .items-container {
     flex-direction: column;
-    align-items: center;
-    background-color: #e8f5e9;
-    padding: 20px;
-    border-radius: 8px;
-    height: 100vh;
-    overflow-y: auto;
+    min-width: 100px; /* Stack sidebar and content vertically on mobile */
   }
 
-  .categories{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.3rem;
-    flex-wrap: wrap;
+  .content {
+    margin-left: 0; /* Remove margin on mobile */
   }
-  
+
   .category {
-    margin-bottom: 20px;
-    width: 20rem;
-    border: 1px solid #45a049;
-    border-radius: 0.2rem;
-  }
-  
-  .category-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .category-header button{
-    outline: none;
-    border: none;
-    border-radius: 0.2rem;
-    background-color: #45a049;
-    color: white;
-    padding: 0.4rem;
-  }
-  
-  .seperator {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-  }
-  
-  .item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #fff;
-    width: 15rem;
-    height: 5rem;
+    
+    width: 100%; /* Full width on mobile */
   }
 
-  .item input{
-    width: auto;
+  .item {
+    width: 100%; /* Full width on mobile */
   }
-  
-  .quantity-controls {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-  }
-  
-  .quantity-controls button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .quantity-controls button:hover {
-    background-color: #45a049;
-  }
-  
-  .quantity-controls span {
-    margin: 0 10px;
-  }
-  
+
   .add-to-cart {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    max-width: 100%; /* Full width on mobile */
   }
-  
-  .add-to-cart:hover {
-    background-color: #45a049;
-  }
+}

@@ -1,0 +1,67 @@
+/* Sidebar Container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #2e7d32;
+  transition: left 0.3s ease;
+  z-index: 1000;
+}
+
+/* Burger Menu Icon */
+.burger-menu {
+  position: absolute;
+  top: 20px;
+  right: -50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  background-color: green;
+  height: 24px;
+  cursor: pointer;
+  display: none;
+}
+
+.burger-menu .line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar Options */
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar-item {
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover {
+  background-color: #388e3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+}
