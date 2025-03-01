@@ -10,9 +10,9 @@ dotenv.config();
 // Import routes
 const cartRoutes = require('./routes/cartRoute');
 const orderRoutes = require('./routes/orderRoute');
-const userRoutes = require('./routes/userRoute');
 const itemRoutes = require('./routes/companyItem.route'); // Changed naming convention
 const companyRoutes = require('./routes/company.route');
+const shopkeeperRoutes = require("./routes/shopkeeper.route")
 
 // Initialize Express app
 const app = express();
@@ -33,9 +33,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Routes
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/users', userRoutes);
 app.use('/api/item', itemRoutes); // Updated route name
 app.use('/api/company', companyRoutes);
+app.use('/api/shopkeeper', shopkeeperRoutes); 
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

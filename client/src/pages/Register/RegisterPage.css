@@ -7,6 +7,12 @@
   padding: 2rem;
   padding-right:3rem;
 }
+small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #616161;
+  font-size: 0.8rem;
+} 
 
 .register-box {
   background-color: #f5f5f5;

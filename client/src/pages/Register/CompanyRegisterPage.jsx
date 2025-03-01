@@ -5,32 +5,16 @@ import './RegisterPage.css';
 const CompanyRegisterPage = () => {
   const [formData, setFormData] = useState({
     companyName: '',
-    logisticPersonName: '',
     phoneNumber: '',
-    categories: []
+    email: '',
+    password: '',
+    address: '',
+    category: ''
   });
-  const [newCategory, setNewCategory] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleAddCategory = () => {
-    if (newCategory.trim() !== '') {
-      setFormData(prev => ({
-        ...prev,
-        categories: [...prev.categories, newCategory.trim()]
-      }));
-      setNewCategory('');
-    }
-  };
-
-  const handleRemoveCategory = (index) => {
-    setFormData(prev => ({
-      ...prev,
-      categories: prev.categories.filter((_, i) => i !== index)
-    }));
   };
 
   const handleSubmit = (e) => {
@@ -42,7 +26,10 @@ const CompanyRegisterPage = () => {
   return (
     <div className="register-container">
       <div className="register-box">
-        <h2>Company Registration</h2>
+        <div className="register-header">
+          <h2>Company Registration</h2>
+          <p>Join our platform to manage your business efficiently</p>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="companyName">Company Name</label>
@@ -52,19 +39,6 @@ const CompanyRegisterPage = () => {
               name="companyName"
               placeholder="Enter company name"
               value={formData.companyName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="logisticPersonName">Logistic Person Name</label>
-            <input
-              type="text"
-              id="logisticPersonName"
-              name="logisticPersonName"
-              placeholder="Enter logistic person name"
-              value={formData.logisticPersonName}
               onChange={handleChange}
               required
             />
@@ -84,36 +58,55 @@ const CompanyRegisterPage = () => {
           </div>
 
           <div className="form-group">
-            <label>Product Categories</label>
-            <div className="category-input">
-              <input
-                type="text"
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
-                placeholder="Enter category name"
-              />
-              <button
-                type="button"
-                className="add-category-button"
-                onClick={handleAddCategory}
-              >
-                Add
-              </button>
-            </div>
-            <div className="categories-list">
-              {formData.categories.map((category, index) => (
-                <div key={index} className="category-item">
-                  <span>{category}</span>
-                  <button
-                    type="button"
-                    className="remove-category-button"
-                    onClick={() => handleRemoveCategory(index)}
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
-            </div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter email address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              placeholder="Enter company address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="category">Category</label>
+            <input
+              type="text"
+              id="category"
+              name="category"
+              placeholder="Enter your category (e.g., Food, Cloth)"
+              value={formData.category}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <button type="submit" className="register-button">
