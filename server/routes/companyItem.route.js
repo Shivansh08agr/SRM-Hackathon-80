@@ -6,6 +6,6 @@ const companyController = require('../controllers/item/item.controller.js');
 // Item routes
 router.get('/getall/:id', companyController.getAllItems);
 router.post('/add/:id' ,companyController.addItem);
-router.put('/:id', companyController.updateItem);
+router.delete('/delete/:id', companyController.deleteItem);
 
 module.exports = router;
