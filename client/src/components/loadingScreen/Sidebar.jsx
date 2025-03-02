@@ -35,7 +35,7 @@ const Sidebar = ({ setActiveSection }) => {
         <div className="sidebar-item" onClick={() => handleSectionClick('suggestions')}>
           Suggestions
         </div>
-        <div className="sidebar-item" onClick={() => handleSectionClick('addinventory')}>
+        <div className="sidebar-item" onClick={() => handleSectionClick('AddInventory/SelectCompanies')}>
           Add Inventory
         </div>
       </div>
