@@ -38,7 +38,7 @@ const companyController = {
     // Add new item
     async addItem(req, res) {
         try {
-            const { name, description, price, quantity } = req.body;
+            const { name, description, price, quantity, expiry_date, shelf_life } = req.body;
             const companyId  = req.params; // Correctly destructure companyId
             console.log(companyId)
             if (!mongoose.Types.ObjectId.isValid(companyId)) {
@@ -53,6 +53,8 @@ const companyController = {
                 description,
                 price,
                 quantity,
+                expiry_date,
+                shelf_life,
                 companyId: new mongoose.Types.ObjectId(companyId)
             });
 
@@ -112,6 +114,27 @@ const companyController = {
                 success: false,
                 message: 'Error deleting item',
                 error: error.message,
+            });
+        }
+    },
+    async getItemsInfo (req, res) {
+        try {
+            const items = await CompanyItem.find({})
+                .select('_id expiry_date shelf_life name')
+                .lean();
+    
+            return res.status(200).json({
+                success: true,
+                count: items.length,
+                data: items
+            });
+    
+        } catch (error) {
+            console.error('Get items info error:', error);
+            return res.status(500).json({
+                success: false,
+                message: 'Error fetching items information',
+                error: error.message
             });
         }
     },

@@ -12,6 +12,14 @@ const companyItemSchema = new mongoose.Schema({
         type: Number, 
         required: true 
     },
+    expiry_date: {
+        type: Date,
+        required: true
+    },
+    shelf_life: {
+        type: Number,
+        required: true
+    },
     quantity: { 
         type: Number, 
         required: true 
