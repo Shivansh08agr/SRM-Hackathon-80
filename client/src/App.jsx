@@ -12,6 +12,9 @@ import IndividualOrders from './pages/Shopkeeper/OrdersAndPaymentLog/IndividualO
 import SelectCompanies from './pages/Shopkeeper/AddInventory/SelectCompanies/SelectCompanies';
 import SelectItems from './pages/Shopkeeper/AddInventory/SelectItems/SelectItems';
 import PlaceOrder from './pages/Shopkeeper/AddInventory/PlaceOrder/PlaceOrder';
+import ListItems from './pages/Company/ListItems/ListItems';
+import ViewOrders from './pages/Company/ViewOrders/ViewOrders';
+import OrderDetails from './pages/Company/OrderDetails/OrderDetails';
 
 const Dashboard = () => <div>Welcome to the Dashboard!</div>;
 
@@ -32,6 +35,9 @@ const App = () => (
       <Route path="/shopkeeper/addinventory/selectcompanies" element={<SelectCompanies />} />
       <Route path="/shopkeeper/addinventory/selectitems" element={<SelectItems />} />
       <Route path="/shopkeeper/addinventory/placeorder" element={<PlaceOrder />} />
+      <Route path="/company/listitems" element={<ListItems />} />
+      <Route path="/company/vieworders" element={<ViewOrders />} />
+      <Route path="/company/orderdetails" element={<OrderDetails />} />
     </Routes>
   </Router>
 );

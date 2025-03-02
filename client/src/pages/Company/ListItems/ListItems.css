@@ -1,0 +1,51 @@
+.list-items-container {
+    background-color: #e8f5e9;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .items-table th,
+  .items-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .items-table th {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .add-item-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .add-item-form input {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .add-item-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-item-button:hover {
+    background-color: #45a049;
+  }

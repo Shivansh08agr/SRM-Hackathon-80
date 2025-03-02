@@ -22,7 +22,8 @@
   margin-bottom: 20px;
   width: 20rem;
   border: 1px solid #45a049;
-  border-radius: 0.2rem;
+  background-color: #e2ffe3;
+  border-radius: 12px;
 }
 
 .category-header {
