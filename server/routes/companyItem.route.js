@@ -7,5 +7,6 @@ const companyController = require('../controllers/item/item.controller.js');
 router.get('/getall/:id', companyController.getAllItems);
 router.post('/add/:id' ,companyController.addItem);
 router.delete('/delete/:id', companyController.deleteItem);
+router.get('/getItemsInfo', companyController.getItemsInfo);
 
 module.exports = router;
