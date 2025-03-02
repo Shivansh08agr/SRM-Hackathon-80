@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
+import axios from 'axios';
 
 const ShopkeeperRegisterPage = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
+    username: '', // Changed from name to match backend
     shopName: '',
     email: '',
     password: '',
@@ -15,27 +19,59 @@ const ShopkeeperRegisterPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    setError(''); // Clear error when user types
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Shopkeeper Registration Data:', formData);
-    // Add your registration logic here
+    setLoading(true);
+    setError('');
+
+    try {
+      // Create axios instance with base URL
+      const api = axios.create({
+        baseURL: 'http://localhost:3000',
+        timeout: 5000,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const response = await api.post('/api/shopkeeper/register', formData);
+
+      if (response.data) {
+        console.log('Registration successful:', response.data);
+        if (response.data.token) {
+          localStorage.setItem('token', response.data.token);
+        }
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      setError(
+        error.response?.data?.msg || 
+        error.message || 
+        'Registration failed. Please try again.'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="register-container">
       <div className="register-box">
         <h2>Shopkeeper Registration</h2>
+        {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Your Name</label>
+            <label htmlFor="username">Your Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="username"
+              name="username"
               placeholder="Enter your name"
-              value={formData.name}
+              value={formData.username}
               onChange={handleChange}
               required
             />

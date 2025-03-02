@@ -19,7 +19,16 @@ const shopkeeperRoutes = require("./routes/shopkeeper.route")
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'], // Vite's default ports
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    exposedHeaders: ['set-cookie']
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cookieParser());

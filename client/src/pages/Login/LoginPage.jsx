@@ -22,11 +22,31 @@ const LoginPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) =>{
     e.preventDefault();
     console.log('Login Data:', formData);
     // Add your login logic here
-    navigate('/dashboard');
+    try {
+      if(formData.role === 'shopkeeper'){
+        const response = await axios.post('http://localhost:3000/api/shopkeeper/login', formData, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          withCredentials: true
+        });
+      }
+      else{
+        const response = await axios.post('http://localhost:3000/api/company/logincompany', formData, {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          withCredentials: true
+        });
+      }
+      } catch (error) {
+        console.error('Login error:', error);
+    }
+    navigate('/shopkeeper/placeorder/items');
   };
 
   const handleRegister = () => {

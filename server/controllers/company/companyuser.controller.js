@@ -19,7 +19,7 @@ const registerCompanyUser = async (req, res) => {
             password,
             address
         });
-        user.password = await bcrypt.hash(password, salt);
+        user.password = await bcrypt.hash(password, 10);
 
         await user.save();
 

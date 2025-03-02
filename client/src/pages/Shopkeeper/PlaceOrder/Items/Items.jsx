@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from 'C:/Users/shiva/OneDrive/Desktop/SRM-Hackathon-80/client/src/components/loadingScreen/Sidebar.jsx';
+import Sidebar from '../../../../components/loadingScreen/Sidebar.jsx';
 import './Items.css';
 
   const items = {

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
+import axios from 'axios';
 
 const CompanyRegisterPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     companyName: '',
     phoneNumber: '',
@@ -17,10 +19,31 @@ const CompanyRegisterPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log('Company Registration Data:', formData);
+    // console.log('Company Registration Data:', formData);
     // Add your registration logic here
+    try {
+      const response = await axios.post('http://localhost:3000/api/company/registercompany', formData, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        withCredentials: true
+      });
+
+      if (response.data) {
+        console.log('Registration successful:', response.data);
+        // Store the token if returned
+        if (response.data.token) {
+          localStorage.setItem('token', response.data.token);
+        }
+        // Redirect to login page
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      
+    }
   };
 
   return (
